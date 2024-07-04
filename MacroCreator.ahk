@@ -1,4 +1,5 @@
-﻿; *****************************
+﻿#Requires AutoHotkey v1
+; *****************************
 ; :: PULOVER'S MACRO CREATOR ::
 ; *****************************
 ; "The Complete Automation Tool"

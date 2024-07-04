@@ -9,7 +9,7 @@ I am very confident all bloatware has been removed from this installer, but I'm 
 
 ## Remove Web Companion
 
-To help remove the Web Companion adware from your machine, I recommend these steps:
+To help remove the Web Companion bloatware from your machine, I recommend these steps:
 
 1. Remove "Web Companion" via Settings > Apps > Installed Apps
 1. Remove the registry keys for Web Companion [learn more](https://github.com/Pulover/PuloversMacroCreator/issues/243#issuecomment-1272645212):

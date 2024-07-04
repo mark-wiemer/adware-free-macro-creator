@@ -26,7 +26,7 @@ The application is prepared to recognize a help file in the same directory of Ma
 
 ## Compile Instructions
 
-Source requires the latest version of [AutoHotkey](https://www.autohotkey.com/) to run.
+Source requires the latest version of [AutoHotkey v1](https://www.autohotkey.com/) to run. AutoHotkey v2 is not supported.
 
 The source for SciLexer.dll can be found at [fincs/SciTE4AutoHotkey](https://github.com/fincs/SciTE4AutoHotkey).
 

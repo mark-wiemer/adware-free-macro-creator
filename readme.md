@@ -1,6 +1,13 @@
-﻿# Pulover's Macro Creator
+﻿# Pulover's Macro Creator, adware-free (PMC-AF)
 
-Pulover's Macro Creator is a Free Automation Tool and Script Generator based on AutoHotkey language. It features a large range of automation commands, has a built-in recorder and can capture inputs in its interface. The macros can be executed from the program itself or you can export them to AutoHotkey Script format.
+## 🚧 Under construction!
+
+PMC-AF aims to provide an easy-to-install fork of PMC without bundling any unnecessary software. PMC's default installer includes sponsored adware and has for years, and Pulover has not shown any intention of removing it. However, as this repo currently stands, it's just a fork, and hasn't provided any alternative installer. Check back later for updates.
+
+## Overview
+
+Pulover's Macro Creator (PMC) is a Free Automation Tool and Script Generator based on AutoHotkey language. It features a large range of automation commands, has a built-in recorder and can capture inputs in its interface. The macros can be executed from the program itself or you can export them to AutoHotkey Script format.
+
 
 [www.macrocreator.com](https://www.macrocreator.com)
 

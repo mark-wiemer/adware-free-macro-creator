@@ -1,4 +1,5 @@
-﻿;###########################################################
+#Requires AutoHotkey v1
+;###########################################################
 ; Title: Scintilla Wrapper for AHK
 ; Original by RaptorX
 ; http://www.autohotkey.com/board/topic/85928-wrapper-scintilla-wrapper

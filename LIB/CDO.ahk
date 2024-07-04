@@ -1,4 +1,5 @@
-﻿/*
+#Requires AutoHotkey v1
+/*
 Account	:= {email					: "email@gmail.com"
 		,	smtpserver				: "smtp.gmail.com"
 		,	smtpserverport			: 465

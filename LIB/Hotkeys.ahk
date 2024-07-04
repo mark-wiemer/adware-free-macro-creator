@@ -1,4 +1,5 @@
-﻿#If ListFocus && !HotkeyCtrlHasFocus()
+#Requires AutoHotkey v1
+#If ListFocus && !HotkeyCtrlHasFocus()
 && WinActive("ahk_id" PMCWinID) && !Capt
 
 Delete::

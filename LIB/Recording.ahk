@@ -1,4 +1,5 @@
-﻿;##### Capture Keys #####
+#Requires AutoHotkey v1
+;##### Capture Keys #####
 
 MainLoop:
 If (!Capt || !ListFocus)

@@ -1,4 +1,5 @@
-﻿;
+#Requires AutoHotkey v1
+;
 ; File encoding:  UTF-8
 ;
 

@@ -1,4 +1,5 @@
-﻿Playback(Macro_On, LoopInfo := "", ManualKey := "", UDFParams := "", RunningFunction := "", FlowControl := "")
+#Requires AutoHotkey v1
+Playback(Macro_On, LoopInfo := "", ManualKey := "", UDFParams := "", RunningFunction := "", FlowControl := "")
 {
 	local PlaybackVars := [], LVData := [], LoopDepth := 0, LoopCount := [0], StartMark := []
 	, m_ListCount := ListCount%Macro_On%, mLoopIndex, cLoopIndex, iLoopIndex := 0, mLoopLength, mLoopSize, mListRow

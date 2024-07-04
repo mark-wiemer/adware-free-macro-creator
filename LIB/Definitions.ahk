@@ -1,4 +1,5 @@
-﻿If A_OSVersion in WIN_2003,WIN_XP,WIN_2000
+#Requires AutoHotkey v1
+If A_OSVersion in WIN_2003,WIN_XP,WIN_2000
 	_s := Chr(4445)
 ,	RecentFolder := A_AppData "\..\Recent"
 Else

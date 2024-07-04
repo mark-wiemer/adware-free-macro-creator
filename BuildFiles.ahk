@@ -1,4 +1,5 @@
-﻿#NoEnv
+#Requires AutoHotkey v1
+#NoEnv
 SetWorkingDir %A_ScriptDir%
 
 ;##### Inno Setup #####

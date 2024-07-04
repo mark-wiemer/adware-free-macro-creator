@@ -1,4 +1,5 @@
-﻿;=======================================================================================
+#Requires AutoHotkey v1
+;=======================================================================================
 ;
 ; Function:      TabDrag
 ; Description:   Shows a destination bar when dragging a tab in Tab Controls.

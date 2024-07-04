@@ -1,4 +1,5 @@
-﻿SetWorkingDir %A_ScriptDir%
+#Requires AutoHotkey v1
+SetWorkingDir %A_ScriptDir%
 #SingleInstance, Force
 FileEncoding, UTF-8
 

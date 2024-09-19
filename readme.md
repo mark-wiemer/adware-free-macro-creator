@@ -4,6 +4,12 @@
 
 Pulover's Macro Creator (PMC) is a free automation tool and script generator built in AutoHotkey. It features a large range of automation commands, has a built-in recorder, and can capture inputs in its interface. The macros can be executed from the program itself or export to AutoHotkey scripts for advanced editing. Learn more at [www.macrocreator.com](https://www.macrocreator.com)
 
+>[!Important]
+>
+>#### This is designed to create scripts / programs for (and run on) AHK V1.
+>
+>_See_ [Pulovers-Macro-Creator (AHKv2)](https://github.com/samfisherirl/Pulovers-Macro-Creator-for-AHKv2) by **[@samfishirl](https://github.com/samfisherirl)** for an AutoHotkey Version 2 rewrite.
+
 ## Adware-free
 
 PMC-AF provides an easy-to-install fork of PMC without bundling any unnecessary software. PMC's default installer includes sponsored bloatware "[Web Companion](https://www.pcrisk.com/removal-guides/14231-web-companion-unwanted-application)" and has for years, and Pulover has not shown any intention of removing it.

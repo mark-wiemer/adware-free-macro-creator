@@ -1,34 +1,11 @@
-#Requires AutoHotkey v1
-#NoEnv
-SetWorkingDir %A_ScriptDir%
-
-;##### Inno Setup #####
-
-AutoTrim, Off
-IniRead, PMCVer, MacroCreator.ini, Application, Version
-If (PMCVer = "Error")
-{
-	MsgBox, 0, Error!, INI file is missing!
-	ExitApp, 2
-}
-FileDelete, Compiled\MacroCreator.ini
-IniWrite, %PMCVer%, Compiled\MacroCreator.ini, Application, Version
-
-IfExist, Compiled\MacroCreator_Help_zh.chm
-	CNHelp := "Source: ""{#WorkDir}\Compiled\MacroCreator_Help_zh.chm""`; DestDir: ""{app}""`; Flags: ignoreversion"
-Else IfExist, Compiled\MacroCreator_Help_zh_CN.chm
-	CNHelp := "Source: ""{#WorkDir}\Compiled\MacroCreator_Help_zh_CN.chm""`; DestDir: ""{app}""`; Flags: ignoreversion"
-
-Script =
-(
 #define PmcName "Pulover's Macro Creator"
-#define PmcVersion "%PMCVer%"
+#define PmcVersion "5.4.1"
 #define PmcCompany "Cloversoft Serviços de Informática Ltda"
 #define PmcURL "https://www.macrocreator.com"
 #define PmcCopyright "Copyright (C) 2012-2021 Cloversoft Serviços de Informática Ltda"
 #define PmcExeName "MacroCreator.exe"
 #define PmcExt "pmc"
-#define WorkDir "%A_ScriptDir%"
+#define WorkDir "C:\Users\markw\repos\adware-free-macro-creator"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -92,13 +69,13 @@ Name: "install32bit"; Description: "{cm:NameAndVersion,[{#PmcExeName}],{#PmcVers
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 Name: "pmcAssociation"; Description: "{cm:AssocFileExtension,{#PmcName},""{#PmcExt}""}"; GroupDescription: File extensions:
-Name: "portableinstall"; Description: "Don't use `%AppData`%. Settings will be saved in the installation folder."; GroupDescription: "Portable Install:"; Flags: unchecked
+Name: "portableinstall"; Description: "Don't use %AppData%. Settings will be saved in the installation folder."; GroupDescription: "Portable Install:"; Flags: unchecked
 
 [Registry]
 Root: HKCR; Subkey: ".{#PmcExt}"; ValueType: string; ValueName: ""; ValueData: "MacroCreatorFile"; Flags: uninsdeletevalue; Tasks: pmcAssociation
 Root: HKCR; Subkey: "MacroCreatorFile"; ValueType: string; ValueName: ""; ValueData: "Macro Creator File"; Flags: uninsdeletekey; Tasks: pmcAssociation
 Root: HKCR; Subkey: "MacroCreatorFile\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\MacroCreator.exe,0"; Tasks: pmcAssociation
-Root: HKCR; Subkey: "MacroCreatorFile\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\MacroCreator.exe"" ""`%1"""; Tasks: pmcAssociation
+Root: HKCR; Subkey: "MacroCreatorFile\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\MacroCreator.exe"" ""%1"""; Tasks: pmcAssociation
 
 [Files]
 Source: "{#WorkDir}\Compiled\MacroCreator-x64.exe"; DestDir: "{app}"; DestName: "MacroCreator.exe"; Flags: ignoreversion; Tasks: install64bit
@@ -118,7 +95,7 @@ Source: "{#WorkDir}\Bin\tesseract\tessdata_best\eng.traineddata"; DestDir: "{app
 Source: "{#WorkDir}\Bin\tesseract\tessdata_fast\eng.traineddata"; DestDir: "{app}\Bin\tesseract\tessdata_fast"; Flags: ignoreversion; Tasks: portableinstall
 Source: "{#WorkDir}\Bin\tesseract\tessdata_best\eng.traineddata"; DestDir: "{userappdata}\MacroCreator\Bin\tesseract\tessdata_best"; Flags: ignoreversion; Tasks: not portableinstall
 Source: "{#WorkDir}\Bin\tesseract\tessdata_fast\eng.traineddata"; DestDir: "{userappdata}\MacroCreator\Bin\tesseract\tessdata_fast"; Flags: ignoreversion; Tasks: not portableinstall
-%CNHelp%
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -137,123 +114,4 @@ Type: "filesandordirs"; Name: "{app}\Lang"; Tasks: not portableinstall
 [UninstallDelete]
 Type: "filesandordirs"; Name: "{userappdata}\MacroCreator"
 
-
-
-)
-
-FileDelete, Installer.iss
-FileAppend, %Script%, Installer.iss
-
-;##### Help Project Files #####
-
-HelpIndex := "index.html`n"
-Loop, Read, %A_ScriptDir%\Documentation\MacroCreator_Help.ahk
-	If (RegExMatch(A_LoopReadLine, "`tFilename: (.*)", Page)=1)
-		HelpIndex .= Page1 ".html`n"
-HelpIndex := RTrim(HelpIndex, "`n")
-
-Head =
-(
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
-<HTML>
-<BODY>
-)
-
-Head2 =
-(
-<OBJECT type="text/site properties">
-	<param name="Window Styles" value="0x800025">
-	<param name="ImageType" value="Folder">
-</OBJECT>
-)
-
-Head3 =
-(
-
-<UL>
-
-)
-
-Foot =
-(
-</UL>
-</BODY></HTML>
-)
-
-
-HHC := Head . Head2 . Head3, HHK := Head . Head3
-Loop, Parse, HelpIndex, `n
-{
-	FileReadLine, Title, %A_ScriptDir%\Documentation\MacroCreator_Help-doc\%A_LoopField%, 5
-	Title := RegExReplace(Title, "U)<.*>")
-thisline =
-(
-	`t<LI><OBJECT type="text/sitemap">
-		<param name="Name" value="%Title%">
-		<param name="Local" value="%A_LoopField%">
-		</OBJECT>
-
-)
-	HHC .= thisline, HHK .= thisline
-	If (Title = "Command Windows")
-		GoSub, AddCmd
-}
-
-HHC .= Foot, HHK .= Foot
-
-HHP =
-(
-[OPTIONS]
-Auto Index=Yes
-Binary Index=No
-Compatibility=1.1 or later
-Compiled file=MacroCreator_Help.chm
-Contents file=MacroCreator_Help.hhc
-Default Font=Arial,8,0
-Default Window=GlavniWintype
-Default topic=index.html
-Display compile progress=Yes
-Full-text search=Yes
-Index file=MacroCreator_Help.hhk
-Language=0x409 English (United States)
-Title=Pulover's Macro Creator Help
-
-[WINDOWS]
-GlavniWintype="Pulover's Macro Creator Help","MacroCreator_Help.hhc","MacroCreator_Help.hhk","index.html","index.html",,,,,0x63520,,0x200e,[200,0,1080,700],,,,,,,0
-
-
-[FILES]
-%HelpIndex%
-License.html
-)
-
-FileDelete, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhc
-FileDelete, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhk
-FileDelete, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhp
-FileAppend, %HHC%, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhc
-FileAppend, %HHK%, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhk
-FileAppend, %HHP%, Documentation\MacroCreator_Help-doc\MacroCreator_Help.hhp
-
-ExitApp
-
-AddCmd:
-HHC .= "`t<UL>`n"
-
-Loop, Files, %A_ScriptDir%\Documentation\MacroCreator_Help-doc\Commands\*.html
-{
-	FileReadLine, Title, %A_LoopFileFullPath%, 5
-	Title := RegExReplace(Title, "U)<.*>")
-thisline =
-(
-	`t`t<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="%Title%">
-			<param name="Local" value="Commands\%A_LoopFileName%">
-			</OBJECT>
-
-)
-	HHC .= thisline, HHK .= thisline
-}
-
-HHC .= "`t</UL>`n", HHK .= "`t</UL>`n"
-return
 

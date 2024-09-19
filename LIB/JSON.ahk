@@ -1,3 +1,4 @@
+#Requires AutoHotkey v1
 /**
  * Lib: JSON.ahk
  *     JSON lib for AutoHotkey.

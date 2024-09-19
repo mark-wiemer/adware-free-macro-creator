@@ -1,4 +1,5 @@
-﻿TB_Define(ByRef TbPtr, hCtrl, hIL, ButtonsArray, Options := "", Rows := 0)
+#Requires AutoHotkey v1
+TB_Define(ByRef TbPtr, hCtrl, hIL, ButtonsArray, Options := "", Rows := 0)
 {
 	TbPtr := New Toolbar(hCtrl), TbPtr.SetImageList(hIL)
 ,	TbPtr.Add(Options, ButtonsArray*), TbPtr.SetMaxTextRows(Rows)

@@ -1,4 +1,5 @@
-﻿;=======================================================================================
+#Requires AutoHotkey v1
+;=======================================================================================
 ;
 ; Function:      CreateIconsDll
 ; Description:   Creates an Icon Resources Dll from ico files in a folder.

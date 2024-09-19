@@ -1,4 +1,5 @@
-﻿/*!
+#Requires AutoHotkey v1
+/*!
 	Library: Pulover's Macro Creator
 		
 		# Version: 5.4.1

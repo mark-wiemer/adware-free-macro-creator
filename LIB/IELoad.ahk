@@ -1,4 +1,5 @@
-﻿IELoad(Pwb)
+#Requires AutoHotkey v1
+IELoad(Pwb)
 {
 	global StopIt
 	

@@ -1,4 +1,5 @@
-﻿#NoEnv
+﻿#Requires AutoHotkey v1
+#NoEnv
 SetBatchLines -1
 SetWorkingDir %A_ScriptDir%
 SplitPath, A_AhkPath,, AhkDir
@@ -39,18 +40,18 @@ FileCopy, SciLexer-x86.dll, Compiled\SciLexer-x86.dll, 1
 FileCopy, Documentation\MacroCreator_Help-doc\Examples\Demo.pmc, Compiled\Demo.pmc, 1
 FileCopy, Lang\*.lang, Compiled\Lang\, 1
 
-RunWait, %AhkDir%\Compiler\Ahk2Exe.exe /in MacroCreator.ahk /out Compiled\MacroCreator.exe /icon Resources\PMC4_Mult.ico /bin "%AhkDir%\Compiler\Unicode 32-bit.bin",, UseErrorLevel
+RunWait, %AhkDir%\..\Compiler\Ahk2Exe.exe /in MacroCreator.ahk /out Compiled\MacroCreator.exe /icon Resources\PMC4_Mult.ico /bin "%AhkDir%\Unicode 32-bit.bin",, UseErrorLevel
 If (ErrorLevel = "ERROR")
 {
-	MsgBox, 0x40000, Error, % "Error code: " A_LastError " at line " A_LineNumber - 3
+	MsgBox, 0x40000, Error, % "[Compile.ahk] Error code: " A_LastError " at line " A_LineNumber - 3
 	ExitApp
 }
 While (!FileExist("Compiled\MacroCreator.exe"))
 	Sleep, 100
-RunWait, %AhkDir%\Compiler\Ahk2Exe.exe /in MacroCreator.ahk /out Compiled\MacroCreator-x64.exe /icon Resources\PMC4_Mult.ico /bin "%AhkDir%\Compiler\Unicode 64-bit.bin",, UseErrorLevel
+RunWait, %AhkDir%\..\Compiler\Ahk2Exe.exe /in MacroCreator.ahk /out Compiled\MacroCreator-x64.exe /icon Resources\PMC4_Mult.ico /bin "%AhkDir%\Unicode 64-bit.bin",, UseErrorLevel
 If (ErrorLevel = "ERROR")
 {
-	MsgBox, 0x40000, Error, % "Error code: " A_LastError " at line " A_LineNumber - 3
+	MsgBox, 0x40000, Error, % "[Compile.ahk] Error code: " A_LastError " at line " A_LineNumber - 3
 	ExitApp
 }
 While (!FileExist("Compiled\MacroCreator-x64.exe"))
@@ -60,13 +61,13 @@ MsgBox, 262209, Sign files, Sign files with a valid certificate and click OK to 
 IfMsgBox, Cancel
 	ExitApp
 
-RunWait, %ProgramFiles%\Inno Setup 6\iscc.exe  %A_ScriptDir%\Installer.iss,, UseErrorLevel
+RunWait, %ProgramFiles%\Inno Setup 6\iscc.exe %A_ScriptDir%\Installer.iss,, UseErrorLevel
 If (ErrorLevel = "ERROR")
 {
-	RunWait, %ProgramFiles% (x86)\Inno Setup 6\iscc.exe  %A_ScriptDir%\Installer.iss,, UseErrorLevel
+	RunWait, %ProgramFiles% (x86)\Inno Setup 6\iscc.exe %A_ScriptDir%\Installer.iss,, UseErrorLevel
 	If (ErrorLevel = "ERROR")
 	{
-		MsgBox, 0x40000, Error, % "Error code: " A_LastError " at line " A_LineNumber - 3
+		MsgBox, 0x40000, Error, % "[Compile.ahk] Error code: " A_LastError " at line " A_LineNumber - 3
 		ExitApp
 	}
 }
@@ -139,11 +140,11 @@ return
 Zip(FilesToZip, OutFile, SeparateFiles := false)
 {
 	Static vOptions := 4|16
-	
+
 	FilesToZip := StrReplace(FilesToZip, "`n", ";")
 	FilesToZip := StrReplace(FilesToZip, ",", ";")
 	FilesToZip := Trim(FilesToZip, ";")
-	
+
 	objShell := ComObjCreate("Shell.Application")
 	If (SeparateFiles)
 		SplitPath, OutFile,, OutDir

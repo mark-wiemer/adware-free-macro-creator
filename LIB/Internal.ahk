@@ -1,4 +1,5 @@
-﻿LV_GetTexts(Index, ByRef Act := "", ByRef Det := "", ByRef Tim := "", ByRef Del := "", ByRef Typ := "", ByRef Tar := "", ByRef Win := "", ByRef Com := "", ByRef Col := "", ByRef Cod := "")
+#Requires AutoHotkey v1
+LV_GetTexts(Index, ByRef Act := "", ByRef Det := "", ByRef Tim := "", ByRef Del := "", ByRef Typ := "", ByRef Tar := "", ByRef Win := "", ByRef Com := "", ByRef Col := "", ByRef Cod := "")
 {
 	LV_GetText(Act, Index, 2)
 	LV_GetText(Det, Index, 3)

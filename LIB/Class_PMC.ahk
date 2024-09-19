@@ -1,4 +1,5 @@
-﻿Class PMC
+#Requires AutoHotkey v1
+Class PMC
 {
 	static PmcCode
 	static PmcGroups

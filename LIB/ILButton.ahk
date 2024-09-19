@@ -1,4 +1,5 @@
-﻿;##################################################
+#Requires AutoHotkey v1
+;##################################################
 ; Author: tkoi <http://www.autohotkey.net/~tkoi>
 ; Modified by: majkinetor
 ; Modified by: Pulover

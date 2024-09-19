@@ -1,4 +1,5 @@
-﻿#NoEnv
+#Requires AutoHotkey v1
+#NoEnv
 SetBatchLines -1
 SetWorkingDir %A_ScriptDir%
 

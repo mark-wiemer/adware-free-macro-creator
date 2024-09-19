@@ -1,4 +1,5 @@
-﻿;###########################################################
+#Requires AutoHotkey v1
+;###########################################################
 ; Original by majkinetor
 ; http://www.autohotkey.com/board/topic/49214-ahk-ahk-l-forms-framework-08/
 ; With parts and adjustments based on rbrtryn's ChooseColor function

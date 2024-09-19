@@ -1,4 +1,5 @@
-﻿LV_Export(ListID, ByRef CodeLines := "")
+#Requires AutoHotkey v1
+LV_Export(ListID, ByRef CodeLines := "")
 {
 	local LVData, Id_LVData, Indent, RowData, Action, Match, ExpValue, Win
 	, Step, TimesX, DelayX, Type, Target, Window, Comment, UntilArray := []
